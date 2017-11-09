@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	
+
+    <dubbo:application name="dubbo-consumer" />
+    
+ <!--    <dubbo:registry address="zookeeper://192.168.1.121:2181?backup=192.168.1.122:2181,192.168.1.123:2181"/> -->
+    
+     <dubbo:registry address="zookeeper://192.168.31.73:2181"/>
+    
+    <!-- 生成远程服务代理，可以像使用本地bean 
+	<dubbo:reference interface="com.lquan.service.UserService" id="userService" check="false" />-->
+    <!-- 生成远程服务代理，可以像使用本地bean 一样使用demoService 检查级联依赖关系默认为true 当有依赖服务的时候，需求进行设置-->
+	<dubbo:reference interface="com.lquan.service.SimpleService" id="simpleService" />
+	
+</beans>
